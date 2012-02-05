@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for page in range(1, pages) %}
+   <sitemap>
+       {% if page > 1 %}
+       <loc>{{ url('berriart_sitemap', {'page': page}) }}</loc>
+       {% else %}
+       <loc>{{ url('berriart_sitemap') }}</loc>
+       {% endif %}
+   </sitemap>
+{% endfor %}
+</sitemapindex>

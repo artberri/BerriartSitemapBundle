@@ -1,0 +1,28 @@
+Berriart\Bundle\SitemapBundle\Entity\Url:
+    type: entity
+    repositoryClass: Berriart\Bundle\SitemapBundle\Repository\UrlRepository
+    table: berriart_sitemap_url
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        loc:
+            type: string
+            length: 255
+            unique: true
+        lastmod:
+            type: datetime
+            nullable: true
+        changefreq:
+            type: string
+            length: 10
+            nullable: true
+        priority:
+            type: float
+            nullable: true
+
+    oneToMany:
+        images:
+            targetEntity: Berriart\Bundle\SitemapBundle\Entity\ImageUrl
+            mappedBy: url

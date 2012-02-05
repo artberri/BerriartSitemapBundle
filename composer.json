@@ -1,0 +1,22 @@
+{
+    "name": "berriart/sitemap-bundle",
+    "description": "This bundle provides a way to create an xml sitemap using doctrine",
+    "keywords": ["sitemap","command","seo"],
+    "type": "symfony-bundle",
+    "license": "GPL2",
+    "authors": [
+        {
+            "name": "Alberto Varela",
+            "email": "alberto@berriart.com"
+        }
+    ],
+    "require": {
+        "symfony/framework-bundle": "2.*",
+        "doctrine/common": ">=2.0",
+        "symfony/doctrine-bundle": "*",
+    },
+    "autoload": {
+        "psr-0": { "Berriart\\Bundle\\SitemapBundle": "" }
+    },
+    "target-dir": "Berriart/Bundle/SitemapBundle"
+}

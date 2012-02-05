@@ -1,0 +1,13 @@
+<image:loc>{{ image.loc|berriart_sitemap_absolutize }}</image:loc>
+{% if image.caption %}
+<image:caption>{{ image.caption }}</image:caption>
+{% endif %}
+{% if image.geoLocation %}
+<image:geo_location>{{ image.geoLocation }}</image:geo_location>
+{% endif %}
+{% if image.title %}
+<image:title>{{ image.title }}</image:title>
+{% endif %}
+{% if image.license %}
+<image:license>{{ image.license }}</image:license>
+{% endif %}

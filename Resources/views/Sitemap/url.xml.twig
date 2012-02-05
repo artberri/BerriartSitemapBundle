@@ -1,0 +1,15 @@
+<loc>{{ url.loc|berriart_sitemap_absolutize }}</loc>
+{% if url.lastmod %}
+<lastmod>{{ url.lastmod.format('c') }}</lastmod>
+{% endif %}
+{% if url.changefreq %}
+<changefreq>{{ url.changefreq }}</changefreq>
+{% endif %}
+{% if url.priority %}
+<priority>{{ url.priority }}</priority>
+{% endif %}
+{% for image in url.images %}
+<image:image>
+    {% include "AvalancheSitemapBundle:Sitemap:image.xml.twig" with { 'image': image } %}
+</image:image>
+{% endfor %}
