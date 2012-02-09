@@ -110,13 +110,17 @@ Or if you prefer XML:
 ```
 
 The default alias of the bundle's sitemap service is `sitemap`, you can change it
-adding the alias configuration:
+adding the alias configuration. 
+
+The default number of urls (locs) per sitemap page is 50000, you can change it from
+the bundle configuration too.
 
 ``` yaml
 # app/config/config.yml
 berriart_sitemap:
     base_url: http://example.org 
     alias: your_own_sitemap_alias
+    url_limit: 50000
 ```
 
 **Note:**

@@ -20,11 +20,13 @@ class Sitemap
 {
     private $repository;
     private $page;
+    private $limit;
 
-    public function __construct(UrlRepositoryInterface $repository)
+    public function __construct(UrlRepositoryInterface $repository, $limit)
     {
         $this->repository = $repository;
         $this->page = 1;
+        $this->limit = $limit;
     }
 
     public function add(Url $url)
@@ -39,7 +41,7 @@ class Sitemap
 
     public function all()
     {
-        return $this->repository->findAllOnPage($this->page);
+        return $this->repository->findAllOnPage($this->page, $this->limit);
     }
 
     public function get($loc)
@@ -49,7 +51,7 @@ class Sitemap
 
     public function pages()
     {
-        return $this->repository->pages();
+        return $this->repository->pages($this->limit);
     }
 
     public function setPage($page)

@@ -9,7 +9,7 @@ parameters:
 services:
     berriart_sitemap:
         class: %berriart_sitemap.class%
-        arguments: [@berriart_sitemap.repository.url]
+        arguments: [@berriart_sitemap.repository.url, %berriart_sitemap.config.url_limit%]
     berriart_sitemap.controller:
         class: %berriart_sitemap.controller.class%
         arguments: [@berriart_sitemap, @templating, @request]

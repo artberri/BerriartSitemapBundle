@@ -21,11 +21,11 @@ interface UrlRepositoryInterface
      * URL limit by sitemap page 
      */
     const LIMIT = 50000;
-
+    
     function findOneByLoc($loc);
-    function findAllOnPage($page);
+    function findAllOnPage($page, $limit = self::LIMIT);
     function add(Url $url);
     function remove(Url $url);
-    function pages();
+    function pages($limit = self::LIMIT);
     function flush();
 }

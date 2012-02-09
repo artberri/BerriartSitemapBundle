@@ -16,6 +16,7 @@ namespace Berriart\Bundle\SitemapBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use Berriart\Bundle\SitemapBundle\Entity\Url;
 use Berriart\Bundle\SitemapBundle\Repository\UrlRepositoryInterface;
+use Doctrine\ORM\Mapping;
 
 /**
  * UrlRepository
@@ -23,7 +24,7 @@ use Berriart\Bundle\SitemapBundle\Repository\UrlRepositoryInterface;
 class UrlRepository extends EntityRepository implements UrlRepositoryInterface
 {
     private $urlsToRemove = array();
-
+    
     public function add(Url $url)
     {
         $em = $this->getEntityManager();
@@ -31,11 +32,11 @@ class UrlRepository extends EntityRepository implements UrlRepositoryInterface
         $this->scheduleForCleanup($url);
     }
 
-    public function findAllOnPage($page)
+    public function findAllOnPage($page, $limit = self::LIMIT)
     {
         $em = $this->getEntityManager();
-        $maxResults = UrlRepositoryInterface::LIMIT;
-        $firstResult = UrlRepositoryInterface::LIMIT * ($page - 1);
+        $maxResults = $limit;
+        $firstResult = $maxResults * ($page - 1);
         $results = $em->createQuery('SELECT u FROM BerriartSitemapBundle:Url u ORDER BY u.id ASC')
             ->setFirstResult($firstResult)
             ->setMaxResults($maxResults)
@@ -61,9 +62,9 @@ class UrlRepository extends EntityRepository implements UrlRepositoryInterface
         $this->scheduleForCleanup($url);
     }
 
-    public function pages()
+    public function pages($limit = self::LIMIT)
     {
-        return max(ceil($this->countAll() / UrlRepositoryInterface::LIMIT), 1);
+        return max(ceil($this->countAll() / $limit), 1);
     }
 
     public function flush()
