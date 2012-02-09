@@ -33,8 +33,8 @@ service:
 ``` php
 // YourBrand/Bundle/YourBundle/Controller/ExampleController.php
 <?php
-use Berriart\Bundle\BerriartSitemap\Entity\Url;
-use Berriart\Bundle\BerriartSitemap\Entity\ImageUrl;
+use Berriart\Bundle\SitemapBundle\Entity\Url;
+use Berriart\Bundle\SitemapBundle\Entity\ImageUrl;
 
     // ...
     public function exampleAction()
