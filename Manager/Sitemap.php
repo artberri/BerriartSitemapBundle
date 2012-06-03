@@ -68,9 +68,4 @@ class Sitemap
     {
         $this->repository->flush();
     }
-
-    public function lastmod($page)
-    {
-        return $this->repository->getLastmod($page);
-    }
 }
