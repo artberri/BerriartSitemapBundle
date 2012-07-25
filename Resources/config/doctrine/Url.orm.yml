@@ -26,3 +26,4 @@ Berriart\Bundle\SitemapBundle\Entity\Url:
         images:
             targetEntity: Berriart\Bundle\SitemapBundle\Entity\ImageUrl
             mappedBy: url
+            cascade: ['persist', 'remove']

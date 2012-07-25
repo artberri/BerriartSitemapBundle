@@ -57,7 +57,7 @@ use Berriart\Bundle\SitemapBundle\Entity\ImageUrl;
         $image->setGeoLocation($geoLocation);
         $image->setTitle($title);
         $image->setLicense($license);
-        $image->setUrl($url);
+        $url->addImageUrl($url);
         // Add to the sitemap
         // (to complete the insert to db you must call save method, same on update or delete)
         $sitemap->add($url);
