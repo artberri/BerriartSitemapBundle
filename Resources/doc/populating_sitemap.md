@@ -139,5 +139,7 @@ After providers are in place and registered, time to run the generation command:
 
     > php app/console berriart:sitemap:populate
 
+To clear the sitemap previously generated, run the command with the `--clear-sitemap` option:
 
+    > php app/console berriart:sitemap:populate --clear-sitemap
 
