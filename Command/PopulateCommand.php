@@ -17,21 +17,50 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Avalanche\Bundle\SitemapBundle\Sitemap\Provider;
+use Symfony\Component\Console\Input\InputOption;
+use Doctrine\ORM\Query\ResultSetMapping;
 
 class PopulateCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this->setName('berriart:sitemap:populate')
-            ->setDescription('Populate url database, using url providers.');
+            ->setDescription('Populate url database, using url providers.')
+            ->setDefinition(array(
+                    new InputOption('clear_sitemap', null, InputOption::VALUE_NONE, 'Clear sitemap first')
+            )
+        );
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $sitemap = $this->getContainer()->get('berriart_sitemap');
 
+        if (true === $input->getOption('clear_sitemap')) {
+            $this->clearSitemap();
+            $output->write('<info>Sitemap cleared!</info>', true);
+        }
+
         $this->getContainer()->get('berriart_sitemap.provider.chain')->populate($sitemap);
 
         $output->write('<info>Sitemap was sucessfully populated!</info>', true);
+    }
+
+    private function clearSitemap()
+    {
+        $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+        $platform = $em->getConnection()->getDatabasePlatform();
+        $tables = array(
+                $em->getClassMetadata($this->getContainer()->getParameter('berriart_sitemap.entity.url.class'))->getTableName(),
+                $em->getClassMetadata($this->getContainer()->getParameter('berriart_sitemap.entity.image_url.class'))->getTableName()
+        );
+
+        $em->getConnection()->executeUpdate("SET foreign_key_checks = 0;");
+
+        foreach ($tables as $table) {
+            $em->getConnection()->executeUpdate($platform->getTruncateTableSQL($table, true));
+        }
+
+        $em->getConnection()->executeUpdate("SET foreign_key_checks = 1;");
     }
 }

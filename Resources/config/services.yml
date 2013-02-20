@@ -2,6 +2,7 @@ parameters:
     berriart_sitemap.class: Berriart\Bundle\SitemapBundle\Manager\Sitemap
     berriart_sitemap.controller.class: Berriart\Bundle\SitemapBundle\Controller\SitemapController
     berriart_sitemap.entity.url.class: Berriart\Bundle\SitemapBundle\Entity\Url
+    berriart_sitemap.entity.image_url.class: Berriart\Bundle\SitemapBundle\Entity\ImageUrl
     berriart_sitemap.repository.url.class: Berriart\Bundle\SitemapBundle\Repository\UrlRepository
     berriart_sitemap.provider.chain.class: Berriart\Bundle\SitemapBundle\Provider\UrlProviderChain
     berriart_sitemap.twig.extension.class: Berriart\Bundle\SitemapBundle\Twig\SitemapExtension
