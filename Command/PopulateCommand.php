@@ -27,7 +27,7 @@ class PopulateCommand extends ContainerAwareCommand
         $this->setName('berriart:sitemap:populate')
             ->setDescription('Populate url database, using url providers.')
             ->setDefinition(array(
-                    new InputOption('clear_sitemap', null, InputOption::VALUE_NONE, 'Clear sitemap first')
+                    new InputOption('clear-sitemap', null, InputOption::VALUE_NONE, 'Clear sitemap first')
             )
         );
     }
@@ -36,7 +36,7 @@ class PopulateCommand extends ContainerAwareCommand
     {
         $sitemap = $this->getContainer()->get('berriart_sitemap');
 
-        if (true === $input->getOption('clear_sitemap')) {
+        if (true === $input->getOption('clear-sitemap')) {
             $this->clearSitemap();
             $output->write('<info>Sitemap cleared!</info>', true);
         }
