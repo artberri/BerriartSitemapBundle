@@ -9,21 +9,20 @@ parameters:
 services:
     berriart_sitemap:
         class: %berriart_sitemap.class%
-        arguments: [@berriart_sitemap.repository.url, %berriart_sitemap.config.url_limit%]
+        arguments: ["@berriart_sitemap.repository.url", "%berriart_sitemap.config.url_limit%"]
     berriart_sitemap.controller:
         class: %berriart_sitemap.controller.class%
-        arguments: [@berriart_sitemap, @templating, @request]
-        scope: request
+        calls:
+            - [ "setContainer", [ "@service_container" ]]
     berriart_sitemap.repository.url:
         class: %berriart_sitemap.repository.url.class%
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
-        arguments: [%berriart_sitemap.entity.url.class%]
+        factory: ["@doctrine.orm.entity_manager", "getRepository"]
+        arguments: ["%berriart_sitemap.entity.url.class%"]
     berriart_sitemap.provider.chain:
         class: %berriart_sitemap.provider.chain.class%
     berriart_sitemap.twig.extension:
         class: %berriart_sitemap.twig.extension.class%
-        arguments: [%berriart_sitemap.config.base_url%]
+        arguments: ["%berriart_sitemap.config.base_url%"]
         tags:
             -  { name: twig.extension }
     %berriart_sitemap.config.alias%:

@@ -1,13 +1,13 @@
 berriart_sitemap:
     path: /sitemap.xml
-    defaults: { _controller: BerriartSitemapBundle::Sitemap::sitemap, _format: xml }
+    defaults: { _controller: berriart_sitemap.controller:sitemapAction, _format: xml }
     requirements:
         _method: GET
         _format: xml
 
 berriart_sitemap_index:
     path: /sitemapindex.xml
-    defaults: { _controller: BerriartSitemapBundle::Sitemap::sitemapIndex, _format: xml }
+    defaults: { _controller: berriart_sitemap.controller:sitemapIndexAction, _format: xml }
     requirements:
         _method: GET
         _format: xml

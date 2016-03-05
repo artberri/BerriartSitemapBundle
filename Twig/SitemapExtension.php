@@ -33,7 +33,7 @@ class SitemapExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'berriart_sitemap_absolutize' => new \Twig_Filter_Method($this, 'getAbsoluteUrl'),
+            new \Twig_SimpleFilter('berriart_sitemap_absolutize', array($this, 'getAbsoluteUrl')),
         );
     }
 

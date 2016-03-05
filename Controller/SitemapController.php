@@ -13,38 +13,30 @@ namespace Berriart\Bundle\SitemapBundle\Controller;
  * file that was distributed with this source code.
  */
 
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Berriart\Bundle\SitemapBundle\Manager\Sitemap;
 
-class SitemapController
+class SitemapController extends Controller
 {
-    private $sitemap;
-    private $request;
-    private $templating;
-
-    public function __construct(Sitemap $sitemap, EngineInterface $templating, Request $request) //, EngineInterface $templating)
+    public function sitemapAction(Request $request)
     {
-        $this->sitemap = $sitemap;
-        $this->request = $request;
-        $this->templating = $templating;
-    }
+        $page = $request->get('page', 1);
+        $sitemap = $this->get('berriart_sitemap');
 
-    public function sitemapAction()
-    {
-        $page = $this->request->get('page', 1);
+        $sitemap->setPage($page);
 
-        $this->sitemap->setPage($page);
-
-        return $this->templating->renderResponse('BerriartSitemapBundle:Sitemap:sitemap.xml.twig', array(
-            'sitemap' => $this->sitemap
+        return $this->render('BerriartSitemapBundle:Sitemap:sitemap.xml.twig', array(
+            'sitemap' => $sitemap
         ));
     }
 
     public function sitemapIndexAction()
     {
-        return $this->templating->renderResponse('BerriartSitemapBundle:Sitemap:sitemapindex.xml.twig', array(
-            'pages' => $this->sitemap->pages(),
+        $sitemap = $this->get('berriart_sitemap');
+
+        return $this->render('BerriartSitemapBundle:Sitemap:sitemapindex.xml.twig', array(
+            'pages' => $sitemap->pages(),
         ));
     }
 }
