@@ -16,7 +16,6 @@ namespace Berriart\Bundle\SitemapBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use Berriart\Bundle\SitemapBundle\Entity\Url;
 use Berriart\Bundle\SitemapBundle\Repository\UrlRepositoryInterface;
-use Doctrine\ORM\Mapping;
 
 /**
  * UrlRepository

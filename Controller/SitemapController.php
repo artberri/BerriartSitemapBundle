@@ -18,7 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Berriart\Bundle\SitemapBundle\Manager\Sitemap;
 
 class SitemapController
-{ 
+{
     private $sitemap;
     private $request;
     private $templating;
@@ -29,15 +29,10 @@ class SitemapController
         $this->request = $request;
         $this->templating = $templating;
     }
-    
-    public function getRequest()
+
+    public function sitemapAction()
     {
-        return $this->request;
-    }
-    
-    public function sitemap()
-    {
-        $page = $this->getRequest()->get('page', 1);
+        $page = $this->request->get('page', 1);
 
         $this->sitemap->setPage($page);
 
@@ -45,8 +40,8 @@ class SitemapController
             'sitemap' => $this->sitemap
         ));
     }
-    
-    public function sitemapIndex()
+
+    public function sitemapIndexAction()
     {
         return $this->templating->renderResponse('BerriartSitemapBundle:Sitemap:sitemapindex.xml.twig', array(
             'pages' => $this->sitemap->pages(),

@@ -13,8 +13,6 @@ namespace Berriart\Bundle\SitemapBundle\Entity;
  * file that was distributed with this source code.
  */
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Berriart\Bundle\SitemapBundle\Entity\ImageUrl
  */

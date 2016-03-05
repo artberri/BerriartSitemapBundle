@@ -3,7 +3,7 @@
     "description": "This bundle provides a way to create an xml sitemap using doctrine",
     "keywords": ["sitemap","command","seo"],
     "type": "symfony-bundle",
-    "license": "GPL2",
+    "license": "GPL-2.0",
     "authors": [
         {
             "name": "Alberto Varela",
