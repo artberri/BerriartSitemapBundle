@@ -24,32 +24,32 @@ class ImageUrl
      * @var integer $id
      */
     protected $id;
-    
+
     /**
      * @var string $loc
      */
     protected $loc;
-    
+
     /**
      * @var string $caption
      */
     protected $caption;
-    
+
     /**
      * @var string $geoLocation
      */
     protected $geoLocation;
-    
+
     /**
      * @var string $title
      */
     protected $title;
-    
+
     /**
      * @var string $license
      */
     protected $license;
-    
+
     /**
      * @var \Berriart\Bundle\SitemapBundle\Entity\Url $url
      */
@@ -58,7 +58,7 @@ class ImageUrl
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -78,7 +78,7 @@ class ImageUrl
     /**
      * Get loc
      *
-     * @return string 
+     * @return string
      */
     public function getLoc()
     {
@@ -98,7 +98,7 @@ class ImageUrl
     /**
      * Get caption
      *
-     * @return string 
+     * @return string
      */
     public function getCaption()
     {
@@ -118,7 +118,7 @@ class ImageUrl
     /**
      * Get geoLocation
      *
-     * @return string 
+     * @return string
      */
     public function getGeoLocation()
     {
@@ -138,7 +138,7 @@ class ImageUrl
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -158,7 +158,7 @@ class ImageUrl
     /**
      * Get license
      *
-     * @return string 
+     * @return string
      */
     public function getLicense()
     {
@@ -178,7 +178,7 @@ class ImageUrl
     /**
      * Get url
      *
-     * @return Berriart\Bundle\SitemapBundle\Entity\Url 
+     * @return Berriart\Bundle\SitemapBundle\Entity\Url
      */
     public function getUrl()
     {

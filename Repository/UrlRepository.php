@@ -24,7 +24,7 @@ use Doctrine\ORM\Mapping;
 class UrlRepository extends EntityRepository implements UrlRepositoryInterface
 {
     private $urlsToRemove = array();
-    
+
     public function add(Url $url)
     {
         $em = $this->getEntityManager();
@@ -41,7 +41,7 @@ class UrlRepository extends EntityRepository implements UrlRepositoryInterface
             ->setFirstResult($firstResult)
             ->setMaxResults($maxResults)
             ->getResult();
-        
+
         return $results;
     }
 
@@ -51,7 +51,7 @@ class UrlRepository extends EntityRepository implements UrlRepositoryInterface
         if (null !== $url) {
             $this->scheduleForCleanup($url);
         }
-        
+
         return $url;
     }
 
@@ -87,7 +87,7 @@ class UrlRepository extends EntityRepository implements UrlRepositoryInterface
         }
         $this->urlsToRemove = array();
     }
-    
+
     private function countAll()
     {
         $em = $this->getEntityManager();

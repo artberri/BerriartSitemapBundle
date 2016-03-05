@@ -1,13 +1,13 @@
 berriart_sitemap:
     pattern: /sitemap.xml
     defaults: { _controller: berriart_sitemap.controller:sitemap, _format: xml }
-    requirements: 
+    requirements:
         _method: GET
         _format: xml
 
 berriart_sitemap_index:
     pattern: /sitemapindex.xml
     defaults: { _controller: berriart_sitemap.controller:sitemapIndex, _format: xml }
-    requirements: 
+    requirements:
         _method: GET
         _format: xml

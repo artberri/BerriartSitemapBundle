@@ -18,7 +18,7 @@ use Berriart\Bundle\SitemapBundle\Manager\Sitemap;
 class UrlProviderChain implements UrlProviderInterface
 {
     private $providers;
-    
+
     public function __construct()
     {
         $this->providers = array();

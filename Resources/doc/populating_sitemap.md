@@ -129,8 +129,8 @@ services:
 
 **NOTE:** in the above examples, we use router to relative urls or paths. Upon
 rendering, sitemap will figure out if the url is relative and will prefix it
-with current base url. If you want your urls to belong to certain domain, that 
-might be different from the one the sitemap will be available at, make sure to 
+with current base url. If you want your urls to belong to certain domain, that
+might be different from the one the sitemap will be available at, make sure to
 use absolute urls.
 
 ## Populate command
@@ -138,6 +138,3 @@ use absolute urls.
 After providers are in place and registered, time to run the generation command:
 
     > php app/console berriart:sitemap:populate
-
-
-

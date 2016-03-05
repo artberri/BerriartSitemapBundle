@@ -21,7 +21,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Url
 {
     /**
-     * Change Frequency Type Constants 
+     * Change Frequency Type Constants
      */
     const CHANGEFREQ_ALWAYS = 'always';
     const CHANGEFREQ_HOURLY = 'hourly';
@@ -30,39 +30,39 @@ class Url
     const CHANGEFREQ_MONTHLY = 'monthly';
     const CHANGEFREQ_YEARLY = 'yearly';
     const CHANGEFREQ_NEVER = 'never';
-    
+
     /**
      * @var integer $id
      */
     protected $id;
-    
+
     /**
      * @var string $loc
      */
     protected $loc;
-    
+
     /**
      * @var \DateTime $lastmod
      */
     protected $lastmod;
-    
+
     /**
      * @var string $changefreq
      */
     protected $changefreq;
-    
+
     /**
      * @var float $priority
      */
     protected $priority;
-    
+
     /**
      * @var array $images
      */
     protected $images;
 
     /**
-     * Constructor 
+     * Constructor
      */
     public function __construct()
     {
@@ -72,7 +72,7 @@ class Url
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -92,7 +92,7 @@ class Url
     /**
      * Get loc
      *
-     * @return string 
+     * @return string
      */
     public function getLoc()
     {
@@ -112,7 +112,7 @@ class Url
     /**
      * Get lastmod
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getLastmod()
     {
@@ -132,7 +132,7 @@ class Url
     /**
      * Get changefreq
      *
-     * @return string 
+     * @return string
      */
     public function getChangefreq()
     {
@@ -152,13 +152,13 @@ class Url
     /**
      * Get priority
      *
-     * @return float 
+     * @return float
      */
     public function getPriority()
     {
         return $this->priority;
     }
-    
+
     /**
      * Add images
      *
@@ -172,7 +172,7 @@ class Url
     /**
      * Get images
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getImages()
     {

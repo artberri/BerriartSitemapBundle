@@ -18,10 +18,10 @@ use Berriart\Bundle\SitemapBundle\Entity\Url;
 interface UrlRepositoryInterface
 {
     /**
-     * URL limit by sitemap page 
+     * URL limit by sitemap page
      */
     const LIMIT = 50000;
-    
+
     function findOneByLoc($loc);
     function findAllOnPage($page, $limit = self::LIMIT);
     function add(Url $url);

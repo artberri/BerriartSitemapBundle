@@ -11,12 +11,16 @@
         }
     ],
     "require": {
-        "symfony/framework-bundle": "2.*",
+        "php": ">=5.3.9",
+        "symfony/framework-bundle": ">=2.3|~3.0",
         "doctrine/common": ">=2.0",
-        "symfony/doctrine-bundle": "*"
+        "doctrine/doctrine-bundle": "*"
     },
     "autoload": {
         "psr-0": { "Berriart\\Bundle\\SitemapBundle": "" }
     },
-    "target-dir": "Berriart/Bundle/SitemapBundle"
+    "target-dir": "Berriart/Bundle/SitemapBundle",
+    "support": {
+        "docs": "https://github.com/artberri/BerriartSitemapBundle/blob/master/Resources/doc/index.md"
+    }
 }
