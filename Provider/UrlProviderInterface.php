@@ -17,5 +17,5 @@ use Berriart\Bundle\SitemapBundle\Manager\Sitemap;
 
 interface UrlProviderInterface
 {
-    function populate(Sitemap $sitemap);
+    public function populate(Sitemap $sitemap);
 }

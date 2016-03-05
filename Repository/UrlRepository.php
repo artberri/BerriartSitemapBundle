@@ -26,17 +26,17 @@ class UrlRepository extends EntityRepository implements UrlRepositoryInterface
 
     public function add(Url $url)
     {
-        $em = $this->getEntityManager();
-        $em->persist($url);
+        $entityManager = $this->getEntityManager();
+        $entityManager>persist($url);
         $this->scheduleForCleanup($url);
     }
 
     public function findAllOnPage($page, $limit = self::LIMIT)
     {
-        $em = $this->getEntityManager();
+        $entityManager = $this->getEntityManager();
         $maxResults = $limit;
         $firstResult = $maxResults * ($page - 1);
-        $results = $em->createQuery('SELECT u FROM BerriartSitemapBundle:Url u ORDER BY u.id ASC')
+        $results = $entityManager->createQuery('SELECT u FROM BerriartSitemapBundle:Url u ORDER BY u.id ASC')
             ->setFirstResult($firstResult)
             ->setMaxResults($maxResults)
             ->getResult();
@@ -56,8 +56,8 @@ class UrlRepository extends EntityRepository implements UrlRepositoryInterface
 
     public function remove(Url $url)
     {
-        $em = $this->getEntityManager();
-        $em->remove($url);
+        $entityManager = $this->getEntityManager();
+        $entityManager->remove($url);
         $this->scheduleForCleanup($url);
     }
 
@@ -68,8 +68,8 @@ class UrlRepository extends EntityRepository implements UrlRepositoryInterface
 
     public function flush()
     {
-        $em = $this->getEntityManager();
-        $em->flush();
+        $entityManager = $this->getEntityManager();
+        $entityManager->flush();
         $this->cleanup();
     }
 
@@ -80,17 +80,17 @@ class UrlRepository extends EntityRepository implements UrlRepositoryInterface
 
     private function cleanup()
     {
-        $em = $this->getEntityManager();
+        $entityManager = $this->getEntityManager();
         foreach ($this->urlsToRemove as $url) {
-            $em->detach($url);
+            $entityManager->detach($url);
         }
         $this->urlsToRemove = array();
     }
 
     private function countAll()
     {
-        $em = $this->getEntityManager();
-        $results = $em->createQuery('SELECT COUNT(u) FROM BerriartSitemapBundle:Url u')
+        $entityManager = $this->getEntityManager();
+        $results = $entityManager->createQuery('SELECT COUNT(u) FROM BerriartSitemapBundle:Url u')
             ->getSingleResult();
 
         return $results[1];

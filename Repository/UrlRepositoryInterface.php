@@ -22,10 +22,10 @@ interface UrlRepositoryInterface
      */
     const LIMIT = 50000;
 
-    function findOneByLoc($loc);
-    function findAllOnPage($page, $limit = self::LIMIT);
-    function add(Url $url);
-    function remove(Url $url);
-    function pages($limit = self::LIMIT);
-    function flush();
+    public function findOneByLoc($loc);
+    public function findAllOnPage($page, $limit = self::LIMIT);
+    public function add(Url $url);
+    public function remove(Url $url);
+    public function pages($limit = self::LIMIT);
+    public function flush();
 }

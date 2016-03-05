@@ -45,6 +45,7 @@ class SitemapExtension extends \Twig_Extension
         if ('//' === substr($path, 0, 2)) {
             return $this->scheme.':'.$path;
         }
+
         return $this->baseUrl.$path;
     }
 
