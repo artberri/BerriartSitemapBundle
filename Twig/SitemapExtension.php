@@ -19,7 +19,6 @@ class SitemapExtension extends \Twig_Extension
 {
     private $baseUrl;
     private $scheme;
-    private $validScheme = array('http', 'https');
 
     public function __construct($baseUrl)
     {
