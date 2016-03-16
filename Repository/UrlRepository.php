@@ -27,7 +27,7 @@ class UrlRepository extends EntityRepository implements UrlRepositoryInterface
     public function add(Url $url)
     {
         $entityManager = $this->getEntityManager();
-        $entityManager>persist($url);
+        $entityManager->persist($url);
         $this->scheduleForCleanup($url);
     }
 
