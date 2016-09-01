@@ -100,7 +100,7 @@ class Url
     /**
      * Set lastmod
      *
-     * @param datetime $lastmod
+     * @param \DateTime $lastmod
      */
     public function setLastmod($lastmod)
     {
@@ -110,7 +110,7 @@ class Url
     /**
      * Get lastmod
      *
-     * @return datetime
+     * @return \DateTime
      */
     public function getLastmod()
     {
@@ -160,7 +160,7 @@ class Url
     /**
      * Add images
      *
-     * @param Berriart\Bundle\SitemapBundle\Entity\ImageUrl $images
+     * @param \Berriart\Bundle\SitemapBundle\Entity\ImageUrl $images
      */
     public function addImageUrl(\Berriart\Bundle\SitemapBundle\Entity\ImageUrl $images)
     {
@@ -170,7 +170,7 @@ class Url
     /**
      * Get images
      *
-     * @return Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getImages()
     {
