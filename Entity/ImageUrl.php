@@ -166,7 +166,7 @@ class ImageUrl
     /**
      * Set url
      *
-     * @param Berriart\Bundle\SitemapBundle\Entity\Url $url
+     * @param \Berriart\Bundle\SitemapBundle\Entity\Url $url
      */
     public function setUrl(\Berriart\Bundle\SitemapBundle\Entity\Url $url)
     {
@@ -176,7 +176,7 @@ class ImageUrl
     /**
      * Get url
      *
-     * @return Berriart\Bundle\SitemapBundle\Entity\Url
+     * @return \Berriart\Bundle\SitemapBundle\Entity\Url
      */
     public function getUrl()
     {
