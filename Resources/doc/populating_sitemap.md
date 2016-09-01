@@ -138,3 +138,7 @@ use absolute urls.
 After providers are in place and registered, time to run the generation command:
 
     > php app/console berriart:sitemap:populate
+
+Try disallowing debug option if you are getting memory issues:
+
+    > php app/console berriart:sitemap:populate --no-debug
