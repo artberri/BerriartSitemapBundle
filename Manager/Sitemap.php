@@ -22,11 +22,13 @@ class Sitemap
     private $page;
     private $limit;
 
-    public function __construct(UrlRepositoryInterface $repository, $limit)
+    public function __construct(UrlRepositoryInterface $repository, $limit, $multidomain, $baseUrl)
     {
         $this->repository = $repository;
         $this->page = 1;
         $this->limit = $limit;
+        $this->isMultidomain = $multidomain;
+        $this->baseUrl = $baseUrl;
     }
 
     public function add(Url $url)
@@ -41,7 +43,7 @@ class Sitemap
 
     public function all()
     {
-        return $this->repository->findAllOnPage($this->page, $this->limit);
+        return $this->repository->findAllOnPage($this->page, $this->limit, $this->isMultidomain, $this->baseUrl);
     }
 
     public function get($loc)
@@ -51,7 +53,7 @@ class Sitemap
 
     public function pages()
     {
-        return $this->repository->pages($this->limit);
+        return $this->repository->pages($this->limit, $this->isMultidomain, $this->baseUrl);
     }
 
     public function setPage($page)

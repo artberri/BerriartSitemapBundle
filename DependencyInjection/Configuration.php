@@ -36,6 +36,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('base_url')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('alias')->defaultValue('sitemap')->end()
                 ->scalarNode('url_limit')->defaultValue(50000)->end()
+                ->scalarNode('multidomain')->defaultValue(false)->end()
             ->end()
         ;
 

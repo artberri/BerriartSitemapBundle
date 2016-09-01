@@ -39,5 +39,6 @@ class BerriartSitemapExtension extends Extension
         $container->setParameter('berriart_sitemap.config.base_url', $config['base_url']);
         $container->setParameter('berriart_sitemap.config.alias', $config['alias']);
         $container->setParameter('berriart_sitemap.config.url_limit', $config['url_limit']);
+        $container->setParameter('berriart_sitemap.config.multidomain', $config['multidomain']);
     }
 }

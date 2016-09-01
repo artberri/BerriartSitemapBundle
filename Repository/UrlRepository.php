@@ -31,15 +31,17 @@ class UrlRepository extends EntityRepository implements UrlRepositoryInterface
         $this->scheduleForCleanup($url);
     }
 
-    public function findAllOnPage($page, $limit = self::LIMIT)
+    public function findAllOnPage($page, $limit = self::LIMIT, $isMultidomain = false, $baseUrl = '')
     {
+        $whereClause = $this->getWhereClause($isMultidomain);
         $entityManager = $this->getEntityManager();
         $maxResults = $limit;
         $firstResult = $maxResults * ($page - 1);
-        $results = $entityManager->createQuery('SELECT u FROM BerriartSitemapBundle:Url u ORDER BY u.id ASC')
+        $query = $entityManager->createQuery('SELECT u FROM BerriartSitemapBundle:Url u ' . $whereClause . ' ORDER BY u.id ASC')
             ->setFirstResult($firstResult)
-            ->setMaxResults($maxResults)
-            ->getResult();
+            ->setMaxResults($maxResults);
+        $query = $this->setWhereParameter($query, $isMultidomain, $baseUrl);
+        $results = $query->getResult();
 
         return $results;
     }
@@ -61,9 +63,9 @@ class UrlRepository extends EntityRepository implements UrlRepositoryInterface
         $this->scheduleForCleanup($url);
     }
 
-    public function pages($limit = self::LIMIT)
+    public function pages($limit = self::LIMIT, $isMultidomain = false, $baseUrl = '')
     {
-        return max(ceil($this->countAll() / $limit), 1);
+        return max(ceil($this->countAll($isMultidomain, $baseUrl) / $limit), 1);
     }
 
     public function flush()
@@ -87,12 +89,34 @@ class UrlRepository extends EntityRepository implements UrlRepositoryInterface
         $this->urlsToRemove = array();
     }
 
-    private function countAll()
+    private function countAll($isMultidomain, $baseUrl)
     {
+        $whereClause = $this->getWhereClause($isMultidomain);
         $entityManager = $this->getEntityManager();
-        $results = $entityManager->createQuery('SELECT COUNT(u) FROM BerriartSitemapBundle:Url u')
-            ->getSingleResult();
+        $query = $entityManager->createQuery('SELECT COUNT(u) FROM BerriartSitemapBundle:Url u ' . $whereClause);
+        $query = $this->setWhereParameter($query, $isMultidomain, $baseUrl);
+        $results = $query->getSingleResult();
 
         return $results[1];
+    }
+
+    private function getWhereClause($isMultidomain)
+    {
+        $whereClause = '';
+
+        if ($isMultidomain) {
+            $whereClause = 'WHERE u.loc LIKE :baseurl';
+        }
+
+        return $whereClause;
+    }
+
+    private function setWhereParameter($query, $isMultidomain, $baseUrl)
+    {
+        if ($isMultidomain) {
+            $query = $query->setParameter('baseurl', '%' . $baseUrl);
+        }
+
+        return $query;
     }
 }
