@@ -1,3 +1,4 @@
 vendor/
 report/
 summary.xml
+composer.lock
