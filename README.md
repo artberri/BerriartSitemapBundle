@@ -9,13 +9,14 @@
 
 The BerriartSitemapBundle provides a way to create a xml sitemap using doctrine in Symfony2.
 For more information about sitemaps go to [sitemaps.org](http://www.sitemaps.org/). We can
-say that this Bundle is a 'clone' of the [AvalancheSitemapBundle](https://github.com/avalanche123/AvalancheSitemapBundle), but instead of using
+say that this Bundle started as a 'clone' of the [AvalancheSitemapBundle](https://github.com/avalanche123/AvalancheSitemapBundle), but instead of using
 DoctrineMongoDBBundle it uses DoctrineBundle.
 
 Features include:
 
 - Easy way to add/update/delete urls and images to a sitemap
 - Command for populating the sitemap with previusly created urls
+- Multidomain site
 
 ## Documentation
 
