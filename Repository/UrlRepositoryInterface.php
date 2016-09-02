@@ -23,9 +23,9 @@ interface UrlRepositoryInterface
     const LIMIT = 50000;
 
     public function findOneByLoc($loc);
-    public function findAllOnPage($page, $limit = self::LIMIT);
+    public function findAllOnPage($page, $limit = self::LIMIT, $isMultidomain = false, $baseUrl = '');
     public function add(Url $url);
     public function remove(Url $url);
-    public function pages($limit = self::LIMIT);
+    public function pages($limit = self::LIMIT, $isMultidomain = false, $baseUrl = '');
     public function flush();
 }
