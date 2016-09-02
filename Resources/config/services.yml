@@ -9,7 +9,11 @@ parameters:
 services:
     berriart_sitemap:
         class: %berriart_sitemap.class%
-        arguments: ["@berriart_sitemap.repository.url", "%berriart_sitemap.config.url_limit%", "%berriart_sitemap.config.multidomain%", "%berriart_sitemap.config.base_url%"]
+        arguments:
+            - "@request_stack"
+            - "@berriart_sitemap.repository.url"
+            - "%berriart_sitemap.config.url_limit%"
+            - "%berriart_sitemap.config.multidomain%"
     berriart_sitemap.controller:
         class: %berriart_sitemap.controller.class%
         calls:
@@ -22,7 +26,10 @@ services:
         class: %berriart_sitemap.provider.chain.class%
     berriart_sitemap.twig.extension:
         class: %berriart_sitemap.twig.extension.class%
-        arguments: ["%berriart_sitemap.config.base_url%"]
+        arguments:
+            - "@request_stack"
+            - "%berriart_sitemap.config.base_url%"
+            - "%berriart_sitemap.config.multidomain%"
         tags:
             -  { name: twig.extension }
     %berriart_sitemap.config.alias%:

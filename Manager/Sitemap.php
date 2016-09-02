@@ -13,22 +13,25 @@ namespace Berriart\Bundle\SitemapBundle\Manager;
  * file that was distributed with this source code.
  */
 
+use Symfony\Component\HttpFoundation\RequestStack;
 use Berriart\Bundle\SitemapBundle\Entity\Url;
 use Berriart\Bundle\SitemapBundle\Repository\UrlRepositoryInterface;
 
 class Sitemap
 {
-    private $repository;
-    private $page;
-    private $limit;
+    protected $requestStack;
+    protected $repository;
+    protected $page;
+    protected $limit;
+    protected $isMultidomain;
 
-    public function __construct(UrlRepositoryInterface $repository, $limit, $multidomain, $baseUrl)
+    public function __construct(RequestStack $requestStack, UrlRepositoryInterface $repository, $limit, $multidomain)
     {
+        $this->requestStack = $requestStack;
         $this->repository = $repository;
         $this->page = 1;
         $this->limit = $limit;
         $this->isMultidomain = $multidomain;
-        $this->baseUrl = $baseUrl;
     }
 
     public function add(Url $url)
