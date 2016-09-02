@@ -116,7 +116,7 @@ The default number of urls (locs) per sitemap page is 50000, you can change it f
 the bundle configuration too.
 
 The default behaviour is to show every URL in the sitemap. You can add multidomain
-support and only those URL that start with the base domain will be shown. With the
+support, if you do so, only the URLs that start with the domain of the request will be shown. With the
 multidomain support enabled you are required to add the full URLs, including protocol,
 domain, path...
 
@@ -131,7 +131,7 @@ berriart_sitemap:
 
 **Note:**
 
-> The `base_url` will be added to the relative urls added to the sitemap.
+> The `base_url` will be added to the relative urls of the sitemap if multidomain is off.
 
 **Warning:**
 

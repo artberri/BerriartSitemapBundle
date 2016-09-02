@@ -19,19 +19,22 @@ use Berriart\Bundle\SitemapBundle\Repository\UrlRepositoryInterface;
 
 class Sitemap
 {
-    protected $requestStack;
     protected $repository;
     protected $page;
     protected $limit;
     protected $isMultidomain;
+    protected $baseUrl;
 
     public function __construct(RequestStack $requestStack, UrlRepositoryInterface $repository, $limit, $multidomain)
     {
-        $this->requestStack = $requestStack;
         $this->repository = $repository;
         $this->page = 1;
         $this->limit = $limit;
         $this->isMultidomain = $multidomain;
+        if ($this->isMultidomain) {
+            $request = $requestStack->getCurrentRequest();
+            $this->baseUrl = $request->getScheme() . '://' . $request->getHost();
+        }
     }
 
     public function add(Url $url)

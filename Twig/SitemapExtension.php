@@ -72,7 +72,7 @@ class SitemapExtension extends \Twig_Extension
 
         if ($this->isMultidomain) {
             $request = $this->requestStack->getCurrentRequest();
-            $request->getScheme() . '://' . $request->getHost();
+            $baseUrl = $request->getScheme() . '://' . $request->getHost();
         }
 
         return $baseUrl;
