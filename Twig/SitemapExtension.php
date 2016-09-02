@@ -31,7 +31,7 @@ class SitemapExtension extends \Twig_Extension
         $this->isMultidomain = $multidomain;
         $this->scheme = preg_replace('#^(\w+)://.+$#', '$1', $baseUrl);
 
-        if (!in_array($this->scheme, $this->getKnownSchemes())) {
+        if (!$this->isMultidomain && !in_array($this->scheme, $this->getKnownSchemes())) {
             throw new InvalidArgumentException(sprintf('Base url "%s" does not have a valid scheme', $baseUrl));
         }
     }
