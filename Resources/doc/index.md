@@ -16,63 +16,21 @@ MySQL database.
 
 Follow these steps to complete the installation:
 
-1. Download BerriartSitemapBundle
-2. Configure the Autoloader
-3. Enable the Bundle
-4. Configure the BerriartSitemapBundle
-5. Import BerriartSitemapBundle routing
-6. Update your database schema
+1. Install BerriartSitemapBundle
+2. Enable the Bundle
+3. Configure the BerriartSitemapBundle
+4. Import BerriartSitemapBundle routing
+5. Update your database schema
 
-### Step 1: Download BerriartSitemapBundle
-
-Ultimately, the BerriartSitemapBundle files should be downloaded to the
-`vendor/bundles/Berriart/Bundle/SitemapBundle` directory.
-
-This can be done in several ways, depending on your preference. The first
-method is the standard Symfony2 method.
-
-**Using the vendors script**
-
-Add the following lines in your `deps` file:
+### Step 1: Install BerriartSitemapBundle
 
 ```
-[BerriartSitemapBundle]
-    git=http://github.com/artberri/BerriartSitemapBundle.git
-    target=bundles/Berriart/Bundle/SitemapBundle
+composer require berriart/sitemap-bundle
 ```
 
-Now, run the vendors script to download the bundle:
+### Step 2: Enable the bundle
 
-``` bash
-$ php bin/vendors install
-```
-
-**Using submodules**
-
-If you prefer instead to use git submodules, then run the following:
-
-``` bash
-$ git submodule add http://github.com/artberri/BerriartSitemapBundle.git vendor/bundles/Berriart/Bundle/SitemapBundle
-$ git submodule update --init
-```
-
-### Step 2: Configure the Autoloader
-
-Add the `Berriart` namespace to your autoloader:
-
-``` php
-<?php
-// app/autoload.php
-
-$loader->registerNamespaces(array(
-    // ...
-    'Berriart' => __DIR__.'/../vendor/bundles',
-));
-```
-
-### Step 3: Enable the bundle
-
-Finally, enable the bundle in the kernel:
+Enable the bundle in the kernel:
 
 ``` php
 <?php
@@ -83,13 +41,14 @@ public function registerBundles()
     $bundles = array(
         // ...
         new Berriart\Bundle\SitemapBundle\BerriartSitemapBundle(),
+        // ...
     );
 }
 ```
 
-### Step 4: Configure the BerriartSitemapBundle
+### Step 3: Configure the BerriartSitemapBundle
 
-The next step is to configure the bundle. Add the following configuration to 
+The next step is the basic configuration of the bundle. Add the following lines to 
 your `config.yml` based on your project's url.
 
 ``` yaml
@@ -140,7 +99,7 @@ berriart_sitemap:
 > activate the mapping for BerriartSitemapBundle otherwise the mapping 
 > will be ignored.
 
-### Step 5: Import BerriartSitemapBundle routing file
+### Step 4: Import BerriartSitemapBundle routing file
 
 By importing the routing file you will activate the `/sitemapindex.xml` and
 `/sitemap.xml` routes. If you prefer others, create your own routings.
@@ -161,7 +120,7 @@ Or if you prefer XML:
 <import resource="@BerriartSitemapBundle/Resources/config/routing.yml"/>
 ```
 
-### Step 6: Update your database schema
+### Step 5: Update your database schema
 
 Now that the bundle is configured, the last thing you need to do is update your
 database schema because the bundle adds two entities and two new tables.
