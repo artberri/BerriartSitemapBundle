@@ -114,7 +114,7 @@ class UrlRepository extends EntityRepository implements UrlRepositoryInterface
     private function setWhereParameter($query, $isMultidomain, $baseUrl)
     {
         if ($isMultidomain) {
-            $query = $query->setParameter('baseurl', '%' . $baseUrl);
+            $query = $query->setParameter('baseurl', $baseUrl . '%');
         }
 
         return $query;
