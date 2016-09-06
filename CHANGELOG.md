@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 (2016-09-06)
+
+* Fixes for the populate command when multidomain is activated
+
 ## 1.0.0 (2016-09-02)
 
 * Adding multidomain support and first non-beta version
