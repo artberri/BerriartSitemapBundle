@@ -53,8 +53,8 @@ parameters:
 
 services:
     your_bundle.sitemap.provider.sample:
-        class: %your_bundle.sitemap.provider.sample.class%
-        arguments: [@router]
+        class: "%your_bundle.sitemap.provider.sample.class%"
+        arguments: ["@router"]
         tags:
             -  { name: berriart_sitemap.provider }
 ```
@@ -137,8 +137,14 @@ use absolute urls.
 
 After providers are in place and registered, time to run the generation command:
 
-    > php app/console berriart:sitemap:populate
+    > php bin/console berriart:sitemap:populate
 
 Try disallowing debug option if you are getting memory issues:
 
-    > php app/console berriart:sitemap:populate --no-debug
+    > php bin/console berriart:sitemap:populate --no-debug
+
+**Note:**
+
+> We are supposing you are using Symfony 3, if you are still using version 2 replace
+> `bin/console` with `app/console`.
+

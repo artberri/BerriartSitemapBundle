@@ -19,6 +19,7 @@ use Berriart\Bundle\SitemapBundle\Repository\UrlRepositoryInterface;
 
 class Sitemap
 {
+    protected $requestStack;
     protected $repository;
     protected $page;
     protected $limit;
@@ -27,14 +28,11 @@ class Sitemap
 
     public function __construct(RequestStack $requestStack, UrlRepositoryInterface $repository, $limit, $multidomain)
     {
+        $this->requestStack = $requestStack;
         $this->repository = $repository;
         $this->page = 1;
         $this->limit = $limit;
         $this->isMultidomain = $multidomain;
-        if ($this->isMultidomain) {
-            $request = $requestStack->getCurrentRequest();
-            $this->baseUrl = $request->getScheme() . '://' . $request->getHost();
-        }
     }
 
     public function add(Url $url)
@@ -49,7 +47,7 @@ class Sitemap
 
     public function all()
     {
-        return $this->repository->findAllOnPage($this->page, $this->limit, $this->isMultidomain, $this->baseUrl);
+        return $this->repository->findAllOnPage($this->page, $this->limit, $this->isMultidomain, $this->getBaseUrlForMultidomain());
     }
 
     public function get($loc)
@@ -59,7 +57,7 @@ class Sitemap
 
     public function pages()
     {
-        return $this->repository->pages($this->limit, $this->isMultidomain, $this->baseUrl);
+        return $this->repository->pages($this->limit, $this->isMultidomain, $this->getBaseUrlForMultidomain());
     }
 
     public function setPage($page)
@@ -77,4 +75,18 @@ class Sitemap
         $this->repository->flush();
     }
 
+    protected function getBaseUrlForMultidomain()
+    {
+        if (!is_string($this->baseUrl)) {
+            $this->baseUrl = '';
+            if ($this->isMultidomain) {
+                $request = $this->requestStack->getCurrentRequest();
+                if ($request) {
+                    $this->baseUrl = $request->getScheme() . '://' . $request->getHost();
+                }
+            }
+        }
+
+        return $this->baseUrl;
+    }
 }
