@@ -3,13 +3,13 @@ BerriartSitemapBundle Documentation
 
 ## Requirements
 
-This BerriartSitemapBundle requires DoctrineBundle and a database conexion enabled, 
+This BerriartSitemapBundle requires DoctrineBundle and a database conexion enabled,
 it will create two tables (berriart_sitemap_url and berriart_sitemap_url_image)
 
 ## Credits
 
-This Bundle is fully inspired by the [AvalancheSitemapBundle](https://github.com/avalanche123/AvalancheSitemapBundle), but instead of using 
-DoctrineMongoDBBundle it uses DoctrineBundle so you can use it, for example, with a 
+This Bundle is fully inspired by the [AvalancheSitemapBundle](https://github.com/avalanche123/AvalancheSitemapBundle), but instead of using
+DoctrineMongoDBBundle it uses DoctrineBundle so you can use it, for example, with a
 MySQL database.
 
 ## Installation
@@ -48,7 +48,7 @@ public function registerBundles()
 
 ### Step 3: Configure the BerriartSitemapBundle
 
-The next step is the basic configuration of the bundle. Add the following lines to 
+The next step is the basic configuration of the bundle. Add the following lines to
 your `config.yml` based on your project's url.
 
 ``` yaml
@@ -69,7 +69,7 @@ Or if you prefer XML:
 ```
 
 The default alias of the bundle's sitemap service is `sitemap`, you can change it
-adding the alias configuration. 
+adding the alias configuration.
 
 The default number of urls (locs) per sitemap page is 50000, you can change it from
 the bundle configuration too.
@@ -82,7 +82,7 @@ domain, path...
 ``` yaml
 # app/config/config.yml
 berriart_sitemap:
-    base_url: http://example.org 
+    base_url: http://example.org
     alias: your_own_sitemap_alias
     url_limit: 50000
     multidomain: false
@@ -95,8 +95,8 @@ berriart_sitemap:
 **Warning:**
 
 > You need either to use the `auto_mapping` option of the corresponding bundle
-> (done by default for DoctrineBundle in the standard distribution) or to 
-> activate the mapping for BerriartSitemapBundle otherwise the mapping 
+> (done by default for DoctrineBundle in the standard distribution) or to
+> activate the mapping for BerriartSitemapBundle otherwise the mapping
 > will be ignored.
 
 ### Step 4: Import BerriartSitemapBundle routing file
@@ -128,14 +128,19 @@ database schema because the bundle adds two entities and two new tables.
 Execute the following command
 
 ``` bash
-$ php app/console doctrine:schema:update --force
+$ php bin/console doctrine:schema:update --force
 ```
 
-Or if you prefer to execute the SQL manually 
+Or if you prefer to execute the SQL manually
 
 ``` bash
-$ php app/console doctrine:schema:update --dump-sql
+$ php bin/console doctrine:schema:update --dump-sql
 ```
+
+**Note:**
+
+> We are supposing you are using Symfony 3, if you are still using version 2 replace
+> `bin/console` with `app/console`.
 
 ### Next Steps
 
