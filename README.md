@@ -1,3 +1,6 @@
+> **Warning**
+> This project is not maintained anymore
+
 # BerriartSitemapBundle
 
 [![Build Status](https://travis-ci.org/artberri/BerriartSitemapBundle.svg?branch=master)](https://travis-ci.org/artberri/BerriartSitemapBundle) 
@@ -5,7 +8,6 @@
 [![Total Downloads](https://poser.pugx.org/berriart/sitemap-bundle/downloads)](https://packagist.org/packages/berriart/sitemap-bundle)
 [![Latest Unstable Version](https://poser.pugx.org/berriart/sitemap-bundle/v/unstable)](https://packagist.org/packages/berriart/sitemap-bundle)
 [![License](https://poser.pugx.org/berriart/sitemap-bundle/license)](https://packagist.org/packages/berriart/sitemap-bundle)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/cf795209-73d6-49ec-a46d-d248f5e7c34b/mini.png)](https://insight.sensiolabs.com/projects/cf795209-73d6-49ec-a46d-d248f5e7c34b)
 
 The BerriartSitemapBundle provides a way to create a xml sitemap using doctrine in Symfony2.
 For more information about sitemaps go to [sitemaps.org](http://www.sitemaps.org/). We can
